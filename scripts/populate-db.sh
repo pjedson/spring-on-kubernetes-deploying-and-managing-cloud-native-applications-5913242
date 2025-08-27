@@ -7,5 +7,7 @@ export PGPASSWORD=$(kubectl get secrets/localdb-secret -n postgres --template={{
 export PGUSER=$(kubectl get secrets/localdb-secret -n postgres --template={{.data.username}} | base64 -d)
 export PGHOST=localhost
 export PGDATABASE=localdb
+export PGPORT=5432
+
 
 psql -a -f ../dat/data.sql
